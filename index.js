@@ -47,7 +47,6 @@ app.get('/download', async (req, res) => {
         res.status(200);
         res.setHeader('Content-Disposition', 'attachment; filename=db_dump.xlsx');
         res.setHeader('Content-Type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-        res.flushHeaders();
 
         const workbook = new Excel.stream.xlsx.WorkbookWriter({
             stream: res
