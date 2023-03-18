@@ -82,13 +82,17 @@ app.get('/download', async (req, res) => {
         // commit sheet
         sheet.commit();
 
+        // commit workbook
         await workbook.commit();
+
+        // Calling the writable.end() method signals that no more data will be written to the Writable
         res.end();
     } catch (e) {
         console.log(e);
         res.status(500);
         res.end();
     } finally {
+        console.log('finally');
         client.release();
     }
 });
