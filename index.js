@@ -62,6 +62,9 @@ app.get('/download', async (req, res) => {
         
         // download 500000 datas
         // estimated size is more than 10MB
+
+        // A cursor can be used to efficiently read through large result sets without loading the entire result-set into memory ahead of time.
+        // https://node-postgres.com/apis/cursor
         const cursor = client.query(new Cursor('SELECT * FROM ACCOUNTS LIMIT 500000'));
         
         let rows = await cursor.read(batchSize);
