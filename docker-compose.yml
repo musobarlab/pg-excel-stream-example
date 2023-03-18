@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  # psql --dbname=mydb --username=codebaseuser --password
+  db-postgres:
+    container_name: db-postgres
+    working_dir: /usr/app
+    volumes:
+        - ./volumes/postgres_data:/var/lib/postgresql/data
+    image: 'postgres:11.18-alpine'
+    environment:
+      POSTGRES_USER: codebaseuser
+      POSTGRES_PASSWORD: 12345678
+      POSTGRES_DB : mydb
+      PG_VERSION: '11.18-alpine'
+    ports:
+        - "5432:5432"
+    networks:
+      - web
+
+networks:
+  web:
+    driver: bridge
