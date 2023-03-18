@@ -60,6 +60,8 @@ app.get('/download', async (req, res) => {
             {header: 'Created At', key: 'created_at', width: 15},
         ]
         
+        // download 500000 datas
+        // estimated size is more than 10MB
         const cursor = client.query(new Cursor('SELECT * FROM ACCOUNTS LIMIT 500000'));
         
         let rows = await cursor.read(batchSize);
