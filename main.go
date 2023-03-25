@@ -170,15 +170,6 @@ func loggerMiddleware(next http.Handler) http.HandlerFunc {
 }
 
 func generateDummyCSV(ctx context.Context, out io.Writer, delaySeconds int) error {
-	// records := [][]string{
-	// 	{"id", "name", "color"},
-	// 	{"1", "alax", "blue"},
-	// 	{"2", "alix", "red"},
-	// 	{"3", "alux", "pink"},
-	// 	{"4", "alex", "blue"},
-	// 	{"5", "alox", "red"},
-	// }
-
 	w := csv.NewWriter(out)
 
 	for i := 0; i < 50000000; i++ {
