@@ -116,8 +116,6 @@ func downloadCSVHandler() http.HandlerFunc {
 		err := <-done
 		if err != nil {
 			fmt.Println(err)
-			res.WriteHeader(400)
-			return
 		}
 
 	}
@@ -203,7 +201,7 @@ func generateDummyCSV(ctx context.Context, out io.Writer, delaySeconds int) erro
 func generateCSVFromDB(ctx context.Context, out io.Writer, db *sql.DB) error {
 	w := csv.NewWriter(out)
 
-	rows, err := db.Query(`SELECT * FROM public."accounts" LIMIT 1000000`)
+	rows, err := db.Query(`SELECT * FROM public."accounts" LIMIT 2000000`)
 	if err != nil {
 		return err
 	}
