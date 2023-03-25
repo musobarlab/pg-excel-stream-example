@@ -216,7 +216,6 @@ func generateCSVFromDB(ctx context.Context, out io.Writer, db *sql.DB) error {
 	if err != nil {
 		return err
 	}
-	
 
 	defer func() { rows.Close() }()
 
